@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>猜數字遊戲</title>
+  <script>
+    window.onload = function() {
+      var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+      function startGame() {
+        var guessedCorrectly = false;
+        while (!guessedCorrectly) {
+          var userInput = prompt("Number Guessing\nPick a number between 1 and 10");
+          if (userInput !== null) {
+            var number = parseInt(userInput);
+
+            if (number === randomNumber) {
+              guessedCorrectly = true;
+              alert("correct!!");
+            } else if (number >= 1 && number <= 10) {
+              alert("wrong, try again");
+            } else {
+              alert("Please enter a valid number between 1 and 10");
+            }
+          } else {
+            guessedCorrectly = true;
+          }
+        }
+        displayRestartMessage(); // 遊戲結束後顯示重新開始訊息
+      }
+
+      startGame(); // 開始遊戲
+
+      function displayRestartMessage() {
+        var restartMessage = document.createElement('p');
+        restartMessage.textContent = 'Hit F5 to play again';
+        document.body.appendChild(restartMessage);
+      }
+    };
+  </script>
+</head>
+</html>
